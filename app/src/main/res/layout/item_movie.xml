@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.lotte.task.moviesearch.model.MovieModel" />
+    </data>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="24dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/img_item_poster"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="200dp"
+                app:imageUrl="@{movie.posterUrl}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@color/black" />
+
+            <TextView
+                android:id="@+id/text_item_title_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/text_cons"
+                android:textColor="#ff0000"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_item_poster" />
+
+            <TextView
+                android:id="@+id/text_item_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@{movie.title}"
+                android:textColor="@color/color_707070"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/text_item_title_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/text_item_title_title"
+                app:layout_constraintTop_toBottomOf="@id/img_item_poster"
+                tools:text="서편제" />
+
+            <TextView
+                android:id="@+id/text_item_director_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/text_cons"
+                android:textColor="#ff0000"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_item_title_title" />
+
+            <TextView
+                android:id="@+id/text_item_director"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@{movie.directorNm}"
+                android:textColor="@color/color_707070"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/text_item_director_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/text_item_director_title"
+                app:layout_constraintTop_toBottomOf="@id/text_item_title_title"
+                tools:text="박찬욱" />
+
+            <TextView
+                android:id="@+id/text_item_release_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/text_cons"
+                android:textColor="#ff0000"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_item_director_title" />
+
+            <TextView
+                android:id="@+id/text_item_release"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@{movie.releaseDate}"
+                android:textColor="@color/color_707070"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/text_item_release_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/text_item_release_title"
+                app:layout_constraintTop_toBottomOf="@id/text_item_director_title"
+                tools:text="2018-09-09" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>
