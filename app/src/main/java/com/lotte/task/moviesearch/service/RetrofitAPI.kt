@@ -12,6 +12,7 @@ interface RetrofitAPI {
     fun getSearchData(
         @Query("keyword") keyword: String,
         @Query("detail") detail: String,
+        @Query("listCount") listCount: Int = 100,
         @Query("ServiceKey") ServiceKey: String = "ServiceKey",
         @Query("collection") collection: String = "kmdb_new2"
     ): Single<MoviesModel>

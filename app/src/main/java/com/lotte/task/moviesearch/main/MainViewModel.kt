@@ -3,9 +3,9 @@ package com.lotte.task.moviesearch.main
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.jobplanet.task.service.RetrofitService
-import com.jobplanet.task.util.Event
 import com.lotte.task.moviesearch.model.MovieModel
+import com.lotte.task.moviesearch.service.RetrofitService
+import com.lotte.task.moviesearch.util.Event
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 

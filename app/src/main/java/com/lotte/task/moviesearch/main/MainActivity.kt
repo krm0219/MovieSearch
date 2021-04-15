@@ -1,8 +1,10 @@
 package com.lotte.task.moviesearch.main
 
+import android.content.Context
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -87,7 +89,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun hideKeyboard() {
 
-        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(edit_main_keyword.windowToken, 0)
     }
 }
