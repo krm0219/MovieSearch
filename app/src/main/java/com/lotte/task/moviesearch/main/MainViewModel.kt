@@ -1,6 +1,5 @@
 package com.lotte.task.moviesearch.main
 
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -54,7 +53,6 @@ class MainViewModel : ViewModel() {
             _showEmptyToast.value = Event(true)
         } else {
 
-            Log.e("krm0219", "Keyword  ${_keyword.value!!}")
             RetrofitService.client.getSearchData(keyword = _keyword.value!!)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -68,14 +66,11 @@ class MainViewModel : ViewModel() {
                     } else {
 
                         _movies.postValue(it.items[0].movies)
-                        Log.e("krm0219", "Size ${it.items.size}  ${it.items[0].movies.size}")
                     }
                 }, {
 
                     _progress.value = View.GONE
                     showErrorToast.value = Event("network")
-
-                    Log.e("krm0219", "Error $it}")
                 })
         }
     }
