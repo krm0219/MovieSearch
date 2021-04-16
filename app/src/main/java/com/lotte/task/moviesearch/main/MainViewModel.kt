@@ -1,5 +1,6 @@
 package com.lotte.task.moviesearch.main
 
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,8 +33,8 @@ class MainViewModel : ViewModel() {
     val showEmptyToast: MutableLiveData<Event<Boolean>>
         get() = _showEmptyToast
 
-    private val _showErrorToast = MutableLiveData<Event<Boolean>>()
-    val showErrorToast: MutableLiveData<Event<Boolean>>
+    private val _showErrorToast = MutableLiveData<Event<Any>>()
+    val showErrorToast: MutableLiveData<Event<Any>>
         get() = _showErrorToast
 
     init {
@@ -53,17 +54,28 @@ class MainViewModel : ViewModel() {
             _showEmptyToast.value = Event(true)
         } else {
 
-            RetrofitService.client.getSearchData(_keyword.value!!, "N")
+            Log.e("krm0219", "Keyword  ${_keyword.value!!}")
+            RetrofitService.client.getSearchData(keyword = _keyword.value!!)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
 
                     _progress.value = View.GONE
-                    _movies.postValue(it.items)
+
+                    if (it.totalCount == 0) {
+
+                        showErrorToast.value = Event("empty")
+                    } else {
+
+                        _movies.postValue(it.items[0].movies)
+                        Log.e("krm0219", "Size ${it.items.size}  ${it.items[0].movies.size}")
+                    }
                 }, {
 
                     _progress.value = View.GONE
-                    showErrorToast.value = Event(true)
+                    showErrorToast.value = Event("network")
+
+                    Log.e("krm0219", "Error $it}")
                 })
         }
     }

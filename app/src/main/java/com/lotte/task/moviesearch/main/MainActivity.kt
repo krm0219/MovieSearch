@@ -3,6 +3,7 @@ package com.lotte.task.moviesearch.main
 import android.content.Context
 import android.os.Bundle
 import android.view.KeyEvent
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
@@ -64,9 +65,16 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.showErrorToast.observe(this, Observer {
 
-            it.getContentIfNotHandled()?.let {
+            it.getContentIfNotHandled()?.let { it1 ->
 
-                Toast.makeText(this, R.string.msg_error, Toast.LENGTH_SHORT).show()
+                if (it1 == "empty") {
+
+                    Toast.makeText(this, R.string.msg_result_null, Toast.LENGTH_SHORT).show()
+                    recycler_main_list.visibility = View.GONE
+                } else if (it1 == "network") {
+
+                    Toast.makeText(this, R.string.msg_error, Toast.LENGTH_SHORT).show()
+                }
             }
         })
 
@@ -83,7 +91,9 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.movies.observe(this, Observer {
 
+            recycler_main_list.visibility = View.VISIBLE
             adapter.setData(it)
+            recycler_main_list.scrollToPosition(0)
         })
     }
 

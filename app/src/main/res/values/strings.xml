@@ -1,14 +1,9 @@
 <resources>
     <string name="app_name">MovieSearch</string>
 
-    <string name="text_search">Search</string>
-    <string name="msg_input_keyword">Input keyword</string>
-    <string name="msg_empty_keyword">Please enter the keyword.</string>
-    <string name="msg_error">Server Connect Error.</string>
-
-    <string name="text_salary_avg">평균연봉</string>
-    <string name="text_currency">만원</string>
-    <string name="text_interview_question">면접질문</string>
-    <string name="text_pros">장점</string>
-    <string name="text_cons">단점</string>
+    <string name="text_search">검색</string>
+    <string name="msg_input_keyword">검색어 입력</string>
+    <string name="msg_empty_keyword">검색어를 입력해주세요.</string>
+    <string name="msg_result_null">검색 결과가 없습니다.</string>
+    <string name="msg_error">네트워크 통신 오류가 발생하였습니다. 잠시후 다시 시도해주세요.</string>
 </resources>

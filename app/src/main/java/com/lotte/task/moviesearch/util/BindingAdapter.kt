@@ -23,7 +23,7 @@ object BindingAdapter {
     fun loadImage(imageView: ImageView, url: String?) {
 
         Glide.with(imageView.context).load(url)
-            .error(R.drawable.ic_launcher_background)
+            .error(R.drawable.bg_rect_ffffff)
             .into(imageView)
     }
 }
